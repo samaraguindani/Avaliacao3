@@ -182,3 +182,128 @@
     color: var(--branco);
     margin-left: 10px;
 }
+
+/*Style Profissional*/
+.navbar-profissional {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--verde);
+    height: 50px;
+    padding: 0 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo_nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.image-button {
+    width: 65px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.conteudo {
+    display: flex;
+    align-items: flex-start;
+}
+
+.foto-profissional {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px 0 20px 0;
+}
+
+.texto-lateral {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    margin: 40px 40px 0 0;
+    max-width: 100%;
+}
+
+.nome-profissional {
+    color: var(--cinza-escuro);
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.especialidade-profissional,
+.registro-profissional {
+    color: var(--cinza-claro);
+    font-family: var(--font-poppins);
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.chat-profissional,
+.agendar-profissional {
+    color: var(--branco);
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-family: var(--font-poppins);
+    margin-top: 20px;
+    cursor: pointer;
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    line-height: 30px;
+    display: inline-block;
+}
+
+.chat-profissional {
+    background-color: var(--roxo);
+    border: solid var(--roxo) 1px;
+}
+
+.agendar-profissional {
+    background-color: var(--laranja);
+    border: solid var(--laranja) 1px;
+}
+
+.lado-esquerdo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 50px;
+}

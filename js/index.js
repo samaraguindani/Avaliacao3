@@ -8,7 +8,7 @@ const PORTA = process.env.PORTA || 3000;
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'cadPessoas', //trocar para o nosso database
+    database: 'clinicaprosperar',
     password: 'postgres',
     port: 5432, 
 });

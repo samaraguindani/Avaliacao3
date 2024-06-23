@@ -1,5 +1,6 @@
 const Profissional = require('../model/profissional');
 
+//usado
 exports.getAll = async (req, res) => {
   try {
     const profissionais = await Profissional.getAll();

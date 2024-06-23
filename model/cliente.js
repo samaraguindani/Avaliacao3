@@ -1,97 +1,34 @@
+const pool = require('../db');
+
 class Cliente {
+  static async getAll() {
+    const query = 'SELECT * FROM cliente';
+    const { rows } = await pool.query(query);
+    return rows;
+  }
 
-    constructor(id, cpf, nome, dataNascimento, endereco, email, senha, imagem) {
-        this._id = id;
-        this._cpf = cpf;
-        this._nome = nome;
-        this._dataNascimento = dataNascimento;
-        this._endereco = endereco;
-        this._email = email;
-        this._senha = senha;
-        this._imagem = imagem;
-    }
+  static async getById(id) {
+    const query = 'SELECT * FROM cliente WHERE id = $1';
+    const { rows } = await pool.query(query, [id]);
+    return rows[0];
+  }
 
-    get id() {
-        return this._id;
-    }
+  static async create(nome, email) {
+    const query = 'INSERT INTO cliente (nome, email) VALUES ($1, $2) RETURNING *';
+    const { rows } = await pool.query(query, [nome, email]);
+    return rows[0];
+  }
 
-    get cpf() {
-        return this._cpf;
-    }
+  static async update(id, nome, email) {
+    const query = 'UPDATE cliente SET nome = $1, email = $2 WHERE id = $3 RETURNING *';
+    const { rows } = await pool.query(query, [nome, email, id]);
+    return rows[0];
+  }
 
-    get nome() {
-        return this._nome;
-    }
-
-    get dataNascimento() {
-        return this._dataNascimento;
-    }
-
-    get email() {
-        return this._email;
-    }
-
-    get senha() {
-        return this._senha;
-    }
-
-    get imagem() {
-        return this._imagem;
-    }
-
-    get endereco() {
-        return this._endereco;
-    }
-
-    set id(value) {
-        this._id = value;
-    }
-
-    set cpf(value) {
-        this._cpf = value;
-    }
-
-    set nome(value) {
-        this._nome = value;
-    }
-
-    set dataNascimento(value) {
-        this._dataNascimento = value;
-    }
-
-    set email(value) {
-        this._email = value;
-    }
-
-    set senha(value) {
-        this._senha = value;
-    }
-
-    set imagem(value) {
-        this._imagem = value;
-    }
-
-    set endereco(value) {
-        this._endereco = value;
-    }
-
-    static async login(pool, email, senha) {
-        try {
-            const query = 'SELECT * FROM cliente WHERE email = $1 AND senha = $2';
-            const values = [email, senha];
-            const result = await pool.query(query, values);
-
-            if (result.rows.length > 0) {
-                const clienteData = result.rows[0];
-                return new Cliente(clienteData.id, clienteData.cpf, clienteData.nome, clienteData.data_nascimento, clienteData.email, clienteData.senha, clienteData.imagem, clienteData.endereco);
-            } else {
-                return null;
-            }
-        } catch (error) {
-            console.error('Erro ao autenticar cliente! ', error.message);
-            throw error;
-        }
-    }
+  static async delete(id) {
+    const query = 'DELETE FROM cliente WHERE id = $1';
+    await pool.query(query, [id]);
+  }
 }
 
 module.exports = Cliente;

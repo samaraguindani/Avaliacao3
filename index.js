@@ -7,6 +7,7 @@ const PORTA = process.env.PORTA || 3000;
 const clienteRoutes = require('./routes/clienteRoutes');
 const profissionalRoutes = require('./routes/profissionalRoutes');
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 

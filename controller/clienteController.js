@@ -43,22 +43,15 @@ exports.getOne = async (req, res) => {
   }
 };
 
-exports.createOne = async (req, res) => {
-  const { nome, email } = req.body;
+exports.create = async (req, res) => {
+  const { nome, cpf, endereco, email, data_nasc, senha } = req.body;
+  
   try {
-    const novoCliente = await Cliente.create(nome, email);
-    res.status(201).json({
-      status: 'success',
-      data: {
-        cliente: novoCliente
-      }
-    });
-  } catch (err) {
-    console.error('Erro ao criar novo cliente:', err);
-    res.status(400).json({
-      status: 'error',
-      message: 'Erro ao criar novo cliente'
-    });
+    await Cliente.create(nome, cpf, endereco, email, data_nasc, senha);
+    res.redirect('/profissionais');
+  } catch (error) {
+      console.error('Erro ao cadastrar cliente:', error.message);
+      res.status(500).json({ error: 'Erro ao cadastrar cliente.' });
   }
 };
 

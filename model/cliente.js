@@ -13,10 +13,20 @@ class Cliente {
     return rows[0];
   }
 
-  static async create(nome, email) {
-    const query = 'INSERT INTO cliente (nome, email) VALUES ($1, $2) RETURNING *';
-    const { rows } = await pool.query(query, [nome, email]);
-    return rows[0];
+  static async create(nome, cpf, endereco, email, data_nasc, senha) {
+    const query = `
+        INSERT INTO cliente (nome, cpf, endereco, email, data_nascimento, senha)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING *
+    `;
+    const values = [nome, cpf, endereco, email, data_nasc, senha];
+
+    try {
+        const result = await pool.query(query, values);
+        return result.rows[0];
+    } catch (error) {
+        throw error;
+    }
   }
 
   static async update(id, nome, email) {

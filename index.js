@@ -19,3 +19,6 @@ app.use('/', router);
 app.listen(PORTA, () => {
     console.log(`Servidor rodando na porta ${PORTA}`);
 });
+
+
+//http://localhost:3000/profissionais

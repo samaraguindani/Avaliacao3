@@ -13,6 +13,7 @@ class Cliente {
     return rows[0];
   }
 
+  //usado
   static async create(nome, cpf, endereco, email, data_nasc, senha) {
     const query = `
         INSERT INTO cliente (nome, cpf, endereco, email, data_nascimento, senha)
@@ -39,6 +40,18 @@ class Cliente {
     const query = 'DELETE FROM cliente WHERE id = $1';
     await pool.query(query, [id]);
   }
-}
 
+  //usado
+  static async autenticar(cpf, email, senha) {
+    const query = 'SELECT * FROM cliente WHERE cpf = $1 AND email = $2 AND senha = $3';
+    const values = [cpf, email, senha];
+
+    try {
+      const { rows } = await pool.query(query, values);
+      return rows; 
+    } catch (error) {
+      throw error;
+    }
+  }
+}
 module.exports = Cliente;

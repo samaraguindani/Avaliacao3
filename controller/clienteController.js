@@ -43,6 +43,7 @@ exports.getOne = async (req, res) => {
   }
 };
 
+//usado
 exports.create = async (req, res) => {
   const { nome, cpf, endereco, email, data_nasc, senha } = req.body;
   
@@ -97,3 +98,24 @@ exports.deleteOne = async (req, res) => {
     });
   }
 };
+
+//usado
+exports.loginCliente = async (req, res) => {
+  try {
+    const { cpf, email, senha } = req.body;
+
+    const clientes = await Cliente.autenticar(cpf, email, senha);
+
+    if (clientes.length > 0) {
+        console.log("Login bem-sucedido para o cliente:", clientes[0].nome);
+        res.redirect('/profissionais');
+    } else {
+        console.log("Tentativa de login com credenciais incorretas:", { cpf, email });
+        res.status(401).send('Credenciais incorretas. <a href="/clientes/login">Tente novamente</a>');
+    }
+  } catch (error) {
+    console.error('Erro ao autenticar cliente:', error.message);
+    res.status(500).send('Erro ao autenticar cliente. <a href="/clientes/login">Tente novamente</a>');
+  }
+};
+

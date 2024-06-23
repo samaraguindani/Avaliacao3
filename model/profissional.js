@@ -4,7 +4,7 @@ class Profissional {
         this._id = id;
         this._cpf = cpf;
         this._nome = nome;
-        this._data_nascimento= data_nasc;
+        this._data_nascimento= data_nascimento;
         this._num_registro = num_registro;
         this._endereco = endereco;
         this._descricao = descricao;

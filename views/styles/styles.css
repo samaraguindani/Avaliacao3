@@ -1,0 +1,314 @@
+:root{
+    --verde: #02AB7F;
+    --branco: #F0F0F0;
+    --laranja: #EE7E06;
+    --roxo: #800080;
+    --rosa: #FFB6C1;
+    --cinza-escuro: #4A4A4A;
+    --cinza-claro: #6E6E6E;
+
+    --font-nunito: "Nunito", sans-serif;
+    --font-quicksand: "Quicksand", sans-serif;
+    --font-poppins: "Poppins", sans-serif;
+}
+
+.bemvindo__titulo,
+.bemvindo__subtitulo,
+.bemvindo__descricao,
+.bemvindo_botao,
+.servicos_oferecidos,
+.servicos_imagens,
+.servicos_tipo,
+.profissionais{
+    font-family: var(--font-poppins);
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.navbar,
+.bemvindo_container,
+.servicoes_divtexto,
+.servicos_divimg,
+.profissionais,
+.profissionais_card{
+    display: flex;
+    flex-direction: row;
+}
+
+.logo_nav,
+.link_nav{
+    color: var(--branco);
+    margin-left: 50px;
+    font-family: var(--font-poppins);
+    font-weight: 300;
+}
+
+.navbar{
+    align-items: center;
+    background-color: var(--verde);
+    height: 50px;
+}
+
+.logo_nav{
+    font-weight: bold;
+    margin-right: 50px;
+}
+
+
+.bemvindo{
+    width: 50%;
+}
+
+.bemvindo_carrossel{
+    width: 40%;
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+.bemvindo__titulo,
+.servicos_oferecidos,
+.profissionais_titulo{
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.bemvindo__titulo{
+    color: var(--laranja);
+}
+
+.bemvindo__subtitulo{
+    color: var(--cinza-escuro);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.bemvindo__descricao{
+    width: 80%;
+    text-align: justify;
+}
+
+.bemvindo_botao{
+    background-color: var(--laranja);
+    color: var(--branco);
+    border: solid var(--laranja) 1px;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.servicos_oferecidos,
+.servicoes_divtexto{
+    color: var(--roxo);
+}
+
+.servicos_divimg,
+.servicoes_divtexto{
+    justify-content: space-between;
+    margin: 0 50px;
+}
+
+.servicos_tipo{
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 40px;
+}
+
+.profissionais_titulo{
+    color: var(--verde);
+    margin-left: 50px;
+}
+
+.profissionais{
+    justify-content: space-between;
+    margin-right: 50px;
+}
+
+.profissionais_card{
+    width: 400px;
+    height: 270px;
+    background-color: var(--rosa);
+    align-items: center;
+    border-radius: 20px;
+    
+}
+
+.profissionais_foto{
+    margin: 15px;
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+
+}
+
+.profissionais_descricao{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.profissionais_nome{
+    color: var(--cinza-escuro);
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profissionais_especialidade,
+.profissionais_registro{
+    color: var(--cinza-claro);
+    font-family: var(--font-poppins);
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.profissionais_botao{
+    background-color: var(--verde);
+    color: var(--branco);
+    border: solid var(--verde) 1px;
+    border-radius: 20px;
+    padding: 5px 7px;
+    font-family: var(--font-poppins);
+}
+
+.footer{
+    background-color: var(--verde);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer_rede{
+    margin-bottom: 0;
+    font-family: var(--font-poppins);
+    color: var(--branco);
+    margin-left: 10px;
+}
+
+/*Style Profissional*/
+.navbar-profissional {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--verde);
+    height: 50px;
+    padding: 0 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo_nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.image-button {
+    width: 65px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.conteudo {
+    display: flex;
+    align-items: flex-start;
+}
+
+.foto-profissional {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px 0 20px 0;
+}
+
+.texto-lateral {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    margin: 40px 40px 0 0;
+    max-width: 100%;
+}
+
+.nome-profissional {
+    color: var(--cinza-escuro);
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.especialidade-profissional,
+.registro-profissional {
+    color: var(--cinza-claro);
+    font-family: var(--font-poppins);
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.chat-profissional,
+.agendar-profissional {
+    color: var(--branco);
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-family: var(--font-poppins);
+    margin-top: 20px;
+    cursor: pointer;
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    line-height: 30px;
+    display: inline-block;
+}
+
+.chat-profissional {
+    background-color: var(--roxo);
+    border: solid var(--roxo) 1px;
+}
+
+.agendar-profissional {
+    background-color: var(--laranja);
+    border: solid var(--laranja) 1px;
+}
+
+.lado-esquerdo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 50px;
+}

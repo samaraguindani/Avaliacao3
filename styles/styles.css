@@ -19,7 +19,8 @@
 .servicos_oferecidos,
 .servicos_imagens,
 .servicos_tipo,
-.profissionais{
+.profissionais,
+.profissionais_titulo{
     font-family: var(--font-poppins);
     margin-left: 50px;
     margin-top: 10px;
@@ -33,6 +34,11 @@
 .profissionais_card{
     display: flex;
     flex-direction: row;
+}
+
+.profissionais_info{
+    display: flex;
+    flex-direction: column;
 }
 
 .logo_nav,
@@ -140,6 +146,17 @@
     border-radius: 16px;
 
 }
+
+.profissionais-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Espaço entre os cartões */
+  }
+
+.break {
+    flex-basis: 100%; /* Isso força uma nova linha */
+    height: 0; /* Não ocupa espaço */
+  }
 
 .profissionais_descricao{
     display: flex;

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const router = express.Router();
 const PORTA = process.env.PORTA || 3000;
+const path = require('path');
 
 const clienteRoutes = require('./routes/clienteRoutes');
 const profissionalRoutes = require('./routes/profissionalRoutes');
@@ -10,6 +11,9 @@ const profissionalRoutes = require('./routes/profissionalRoutes');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
+
+app.use('/styles', express.static(path.join(__dirname, 'styles')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/clientes', clienteRoutes);
 app.use('/profissionais', profissionalRoutes);

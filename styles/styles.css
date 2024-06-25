@@ -44,9 +44,15 @@
 .logo_nav,
 .link_nav{
     color: var(--branco);
-    margin-left: 50px;
+    margin: 0 50px;
     font-family: var(--font-poppins);
     font-weight: 300;
+}
+
+.link_nav:hover{
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 600;
 }
 
 .navbar{

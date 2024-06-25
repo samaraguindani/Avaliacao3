@@ -1,0 +1,210 @@
+:root{
+    --verde: #02AB7F;
+    --branco: #F0F0F0;
+    --laranja: #EE7E06;
+    --roxo: #800080;
+    --rosa: #FFB6C1;
+    --cinza-escuro: #4A4A4A;
+
+    --font-poppins: "Poppins", sans-serif;
+    --font-nunito: "Nunito", sans-serif;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--verde);
+    font-family: var(--font-poppins);
+    height: 50px;
+}
+
+.nav_logo,
+.nav_link{
+    color: var(--branco);
+    margin: 0 50px;
+    font-weight: 300;
+}
+
+.nav_link:hover{
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 600;
+}
+
+.nav_logo{
+    font-weight: 600;
+}
+
+.bemvindo{
+    display: flex;
+    flex-direction: row;
+}
+
+.bemvindo_container{
+    margin: 10px 30px 10px 50px;
+    width: 740px;
+}
+
+.bemvindo_titulo{
+    font-family: var(--font-poppins);
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--laranja);
+}
+
+.bemvindo_subtitulo{
+    font-family: var(--font-poppins);
+    font-size: 17px;
+    font-weight: 600px;
+    color: var(--cinza-escuro);
+    margin: 10px 0;
+}
+
+.bemvindo_descricao{
+    font-family: var(--font-nunito);
+    font-size: 15px;
+    font-weight: 400;
+    text-align: justify;
+    color: var(--cinza-escuro);
+}
+
+.bemvindo_btn{
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    color: var(--branco);
+    background-color: var(--laranja);
+    border: 1px solid var(--laranja);
+    border-radius: 10px;
+    padding: 5px 15px;
+    margin: 10px 0;
+}
+
+.bemvindo_carrossel{
+    width: 740px;
+    margin: 10px 50px 10px 0;
+}
+
+.servicos{
+    margin: 50px;
+}
+
+.servicos_titulo{
+    font-family: var(--font-poppins);
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--roxo);
+}
+
+.servicos_imagem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 50px;
+}
+
+.servicos_texto{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 80px 0 50px;
+    font-family: var(--font-poppins);
+    color: var(--roxo);
+}
+
+.profissionais_titulo{
+    font-family: var(--font-poppins);
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--verde);
+    margin: 30px 50px;
+}
+
+.profissionais{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; 
+    margin: 0 50px;
+  }
+
+.break {
+    flex-basis: 100%; 
+    height: 0; 
+  }
+
+.profissionais_card{
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    height: 270px;
+    background-color: var(--rosa);
+    align-items: center;
+    border-radius: 20px;
+}
+
+.profissionais_foto{
+    margin: 15px;
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.profissionais_nome{
+    font-family: var(--font-poppins);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--cinza-escuro);
+}
+
+.profissionais_especialidade{
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--cinza-claro);
+    margin: 10px 0;
+}
+
+.profissionais_registro{
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--cinza-claro);
+}
+
+.profissionais_btn{
+    font-family: var(--font-poppins);
+    background-color: var(--verde);
+    color: var(--branco);
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+    margin: 30px 0;
+}
+
+.footer{
+    background-color: var(--verde);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 150px;
+    height: 30px;
+}
+
+.footer_link{
+    color: var(--branco);
+    text-decoration: none;
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.footer_link:hover,
+.footer_link:visited{
+    color:  #c9c9c9;
+    text-decoration: none;
+}

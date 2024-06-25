@@ -1,105 +1,75 @@
 const Cliente = require('../model/cliente');
 
-exports.getAll = async (req, res) => {
+exports.getCliente = async (req, res) => {
   try {
-    const clientes = await Cliente.getAll();
-    res.status(200).json({
-      status: 'success',
-      data: {
-        clientes
-      }
-    });
-  } catch (err) {
-    console.error('Erro ao buscar todos os clientes:', err);
-    res.status(500).json({
-      status: 'error',
-      message: 'Erro ao buscar todos os clientes'
-    });
-  }
-};
-
-exports.getOne = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const cliente = await Cliente.getById(id);
-    if (!cliente) {
-      return res.status(404).json({
-        status: 'error',
-        message: 'Cliente não encontrado'
-      });
+    if (!req.session.clienteId) {
+      return res.redirect('/clientes/login');
     }
-    res.status(200).json({
-      status: 'success',
-      data: {
-        cliente
-      }
-    });
-  } catch (err) {
-    console.error(`Erro ao buscar cliente com id ${id}:`, err);
-    res.status(500).json({
-      status: 'error',
-      message: `Erro ao buscar cliente com id ${id}`
-    });
+
+    const clienteId = req.session.clienteId;
+    const cliente = await Cliente.getCliente(clienteId);
+
+    if (!cliente) {
+      return res.status(404).send('Cliente não encontrado.');
+    }
+
+    res.render('perfil', { cliente });
+  } catch (error) {
+      console.error('Erro ao carregar perfil do cliente:', error.message);
+      res.status(500).send('Erro ao carregar perfil do cliente. <a href="/clientes/login">Tente novamente</a>');
   }
 };
 
-//usado
 exports.create = async (req, res) => {
-  const { nome, cpf, endereco, email, data_nasc, senha } = req.body;
-  
   try {
+    const { nome, cpf, endereco, email, data_nasc, senha } = req.body;
     await Cliente.create(nome, cpf, endereco, email, data_nasc, senha);
-    res.redirect('/profissionais');
+    res.redirect('/clientes/login');
   } catch (error) {
       console.error('Erro ao cadastrar cliente:', error.message);
       res.status(500).json({ error: 'Erro ao cadastrar cliente.' });
   }
 };
 
-exports.updateOne = async (req, res) => {
-  const id = req.params.id;
-  const { nome, email } = req.body;
+exports.update = async (req, res) => {
   try {
-    const clienteAtualizado = await Cliente.update(id, nome, email);
+    const { nome, cpf, endereco, email, data_nascimento } = req.body;
+    const clienteId = req.session.clienteId;
+    const clienteAtualizado = await Cliente.update(clienteId, nome, cpf, endereco, email, data_nascimento);
+
     if (!clienteAtualizado) {
-      return res.status(404).json({
-        status: 'error',
-        message: 'Cliente não encontrado'
-      });
+      return res.status(404).send('Cliente não encontrado.');
     }
-    res.status(200).json({
-      status: 'success',
-      data: {
-        cliente: clienteAtualizado
-      }
-    });
+
+    res.redirect('/clientes/perfil');
   } catch (err) {
     console.error(`Erro ao atualizar cliente com id ${id}:`, err);
-    res.status(400).json({
-      status: 'error',
-      message: `Erro ao atualizar cliente com id ${id}`
-    });
+    res.status(400).json({ status: 'error', message: `Erro ao atualizar cliente com id ${id}` });
   }
 };
 
-exports.deleteOne = async (req, res) => {
-  const id = req.params.id;
+exports.delete = async (req, res) => {
   try {
-    await Cliente.delete(id);
-    res.status(204).json({
-      status: 'success',
-      data: null
+    const clienteId = req.session.clienteId;
+    const clienteDeletado = await Cliente.delete(clienteId);
+
+    if (!clienteDeletado) {
+      return res.status(404).send('Cliente não encontrado.');
+    }
+
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).send('Erro ao deletar cliente. <a href="/clientes/perfil">Tente novamente</a>');
+      }
+
+      res.redirect('/clientes/login');
     });
   } catch (err) {
     console.error(`Erro ao excluir cliente com id ${id}:`, err);
-    res.status(500).json({
-      status: 'error',
-      message: `Erro ao excluir cliente com id ${id}`
-    });
+    res.status(500).json({ status: 'error', message: `Erro ao excluir cliente com id ${id}` });
   }
 };
 
-//usado
 exports.loginCliente = async (req, res) => {
   try {
     const { cpf, email, senha } = req.body;
@@ -107,12 +77,15 @@ exports.loginCliente = async (req, res) => {
     const clientes = await Cliente.autenticar(cpf, email, senha);
 
     if (clientes.length > 0) {
-        console.log("Login bem-sucedido para o cliente:", clientes[0].nome);
-        res.redirect('/profissionais');
+      const cliente = clientes[0];
+      req.session.clienteId = cliente.id;
+
+      console.log("Login bem-sucedido para o cliente:", cliente.nome);
+      return res.redirect('/profissionais');
     } else {
-        console.log("Tentativa de login com credenciais incorretas:", { cpf, email });
-        res.status(401).send('Credenciais incorretas. <a href="/clientes/login">Tente novamente</a>');
-    }
+      console.log("Tentativa de login com credenciais incorretas:", { cpf, email });
+      res.status(401).send('Credenciais incorretas. <a href="/clientes/login">Tente novamente</a>');
+    } res.status(401).send('Credenciais incorretas. <a href="/clientes/login">Tente novamente</a>');
   } catch (error) {
     console.error('Erro ao autenticar cliente:', error.message);
     res.status(500).send('Erro ao autenticar cliente. <a href="/clientes/login">Tente novamente</a>');

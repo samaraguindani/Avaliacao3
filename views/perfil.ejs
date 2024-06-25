@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+</head>
+<body>
+    <h1>Editar Perfil do Cliente</h1>
+
+    <form action="/clientes/perfil" method="POST">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="<%= cliente.nome %>" required>
+        </div>
+        <div>
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" value="<%= cliente.cpf %>" required>
+        </div>
+        <div>
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" value="<%= cliente.endereco %>" required>
+        </div>
+        <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" value="<%= cliente.email %>" required>
+        </div>
+        <div>
+            <label for="dataNascimento">Data de Nascimento:</label>
+            <input type="date" id="dataNascimento" name="data_nascimento" value="<%= cliente.data_nascimento.toISOString().substr(0, 10) %>" required>
+        </div>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <form id="delete-form" action="/clientes/perfil/delete" method="POST">
+        <button type="button" style="color: red;" onclick="confirmDelete()">Deletar Perfil</button>
+    </form>
+
+    <script>
+        function confirmDelete() {
+            if (confirm('Tem certeza que deseja deletar seu perfil? Esta ação não pode ser desfeita.')) {
+                document.getElementById('delete-form').submit();
+            }
+        }
+    </script>
+</body>
+</html>

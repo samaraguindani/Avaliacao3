@@ -1,0 +1,91 @@
+:root{
+    --verde: #02AB7F;
+    --branco: #F0F0F0;
+    --laranja: #EE7E06;
+    --roxo: #800080;
+    --rosa: #FFB6C1;
+    --cinza-escuro: #4A4A4A;
+    --cinza-claro: #6E6E6E;
+
+    --font-poppins: "Poppins", sans-serif;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--verde);
+    font-family: var(--font-poppins);
+    height: 50px;
+}
+
+.nav_logo,
+.nav_link{
+    color: var(--branco);
+    margin: 0 50px;
+    font-weight: 300;
+}
+
+.nav_link:hover{
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 600;
+}
+
+.nav_logo{
+    font-weight: 600;
+}
+
+.perfil_titulo{
+    font-family: var(--font-poppins);
+    font-weight: 500;
+    color: var(--laranja);
+    font-size: 28px;
+    margin: 20px 50px;
+}
+
+.perfil_form{
+    margin: 0 50px;
+}
+
+.cliente_label{
+    font-family: var(--font-poppins);
+    color: var(--verde);
+    margin: 5px 0;
+}
+
+.cliente_input{
+    border: transparent;
+    border-bottom: 1px solid var(--laranja);
+    transition: 0.5s;
+    width: 200px;
+    margin: 5px 0;
+}
+
+.cliente_input:hover,
+.cliente_input:focus{
+    border: transparent;
+    border-bottom: 1px solid var(--roxo);
+    outline: none;
+}
+
+.cliente_btn{
+    font-family: var(--font-poppins);
+    background-color: var(--laranja);
+    color: var(--branco);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.delete_btn{
+    font-family: var(--font-poppins);
+    background-color: var(--roxo);
+    color: var(--branco);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+    margin: 10px 50px;
+}

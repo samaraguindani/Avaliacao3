@@ -7,8 +7,6 @@
     --cinza-escuro: #4A4A4A;
     --cinza-claro: #6E6E6E;
 
-    --font-nunito: "Nunito", sans-serif;
-    --font-quicksand: "Quicksand", sans-serif;
     --font-poppins: "Poppins", sans-serif;
 }
 
@@ -81,6 +79,11 @@
     margin: 20px 0 20px 0;
 }
 
+.lado-direito{
+    display: flex;
+    flex-direction: column;
+}
+
 .texto-lateral {
     font-family: var(--font-poppins);
     font-size: 16px;
@@ -135,4 +138,28 @@
     flex-direction: column;
     align-items: center;
     margin: 20px 50px;
+}
+
+.footer{
+    background-color: var(--verde);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 150px;
+    height: 30px;
+}
+
+.footer_link{
+    color: var(--branco);
+    text-decoration: none;
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.footer_link:hover,
+.footer_link:visited{
+    color:  #c9c9c9;
+    text-decoration: none;
 }

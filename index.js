@@ -22,6 +22,7 @@ app.set('view engine', 'ejs');
 
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
 
 app.use('/clientes', clienteRoutes);
 app.use('/profissionais', profissionalRoutes);
